@@ -10,16 +10,18 @@ export default function ProgressoVoto({ mostBeautiful, funniest }: Props) {
     return (
         <article className="vote-progress">
             <section className="candidate-info">
-                <img src={funniest?.urlPreview} alt="" />
-                <h4>Cartão mais Engraçado:</h4>
-                <p>"{funniest?.titulo}"</p>
+                <img className="preview" src={funniest?.urlPreview} alt="" />
+                <h4>Cartão mais Engraçado</h4>
+                <p>{funniest ? `"${funniest.titulo}"` : "Ainda não escolhido!"}</p>
             </section>
             <section className="candidate-info">
-                <img src={mostBeautiful?.urlPreview} alt="" />
+                <img className="preview" src={mostBeautiful?.urlPreview} alt="" />
                 <h4>Cartão mais Bonito</h4>
-                <p>"{mostBeautiful?.titulo}"</p>
+                <p>{mostBeautiful ? `"${mostBeautiful.titulo}"` : "Ainda não escolhido!"}</p>
             </section>
-            <button>Registrar Voto</button>
+            <a href="#" className="vote-anchor">
+                Votar!
+            </a>
         </article>
     )
 }

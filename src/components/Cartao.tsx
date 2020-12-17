@@ -26,7 +26,7 @@ export default function Cartao({ config, setFunniest, setMostBeautiful, isFunnie
                 </div>
             </a>
             <section className="voting">
-                <button className="register-vote-button" onClick={() => {
+                <button className={`register-vote-button ${isMostBeautiful ? 'active' : ''}`} onClick={() => {
                     if (isMostBeautiful) {
                         setMostBeautiful(undefined);
                     } else {
@@ -34,18 +34,22 @@ export default function Cartao({ config, setFunniest, setMostBeautiful, isFunnie
                     }
                 }
                 }>
-                    <Lottie options={beautifulLottieOptions} width="32px" height="32px"></Lottie>
+                    <Lottie options={beautifulLottieOptions}
+                        style={{ margin: 0 }}
+                        width="32px"
+                        height="32px"></Lottie>
                     <span>{isMostBeautiful ? "Desmarcar +Bonito" : "Marcar +Bonito"}</span>
                 </button>
-                <button className="register-vote-button" onClick={() => {
+                <button className={`register-vote-button ${isFunniest ? 'active' : ''}`} onClick={() => {
                     if (isFunniest) {
                         setFunniest(undefined);
                     } else {
                         setFunniest(config);
                     }
                 }}>
-                    <Lottie options={funnyLottieOptions} width="32px" height="32px"></Lottie>
-                    <span>{isFunniest ? "Desmarcar +Engraçado" : "Marcar +Enrgaçado"}</span>
+                    <Lottie options={funnyLottieOptions}
+                        style={{ margin: 0 }} width="32px" height="32px"></Lottie>
+                    <span>{isFunniest ? "Desmarcar +Engraçado" : "Marcar +Engraçado"}</span>
                 </button>
             </section>
         </article>

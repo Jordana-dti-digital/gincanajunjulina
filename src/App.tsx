@@ -5,9 +5,13 @@ import Cartao from './components/Cartao';
 import ProgressoVoto from './components/ProgressoVoto';
 import { CardInfo } from './types';
 import Cards from './data/cards';
+import { shuffle } from './utils';
 
 function App() {
-
+  const [cards, setCards] = useState<CardInfo[]>([]);
+  useEffect(() => {
+    setCards(shuffle(Cards));
+  }, [])
   const [funniest, setFunniest] = useState<CardInfo | null>(null);
   const [mostBeautiful, setMostBeautiful] = useState<CardInfo | null>(null);
   const [count, setCount] = useState(0);
@@ -50,8 +54,9 @@ function App() {
       <div className="container">
         <main className="content">
           <article className="gallery">
-            {Cards.map(card => (
+            {cards.map(card => (
               <Cartao config={card}
+                key={card.titulo}
                 setFunniest={setFunniest}
                 setMostBeautiful={setMostBeautiful}
                 isFunniest={funniest?.titulo === card.titulo}
