@@ -19,7 +19,7 @@ export default function ProgressoVoto({ mostBeautiful, funniest }: Props) {
                 <h4>Cartão mais Bonito</h4>
                 <p>{mostBeautiful ? `"${mostBeautiful.titulo}"` : "Ainda não escolhido!"}</p>
             </section>
-            <a href="#" className="vote-anchor">
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=pTuFnHzOcUubFEKc5Nt53aiUxZlmMUJEhkuGydVrE75UNFdORTRUUEpWMVAzMjZHTE1OUzdPSlAwNS4u" className="vote-anchor">
                 Votar!
             </a>
         </article>
