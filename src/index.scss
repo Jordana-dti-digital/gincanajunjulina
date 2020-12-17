@@ -1,0 +1,237 @@
+img {
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #3244b0;
+  --text-color: white;
+  --terciary: fuchsia;
+  --progress-bar-height: 128px;
+  --progress-bar-padding: 24px;
+  --progress-bar-offset: -1;
+}
+
+body {
+  background-color: var(--primary);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  overflow-anchor: none;
+}
+
+::selection {
+  background: var(--terciary);
+}
+
+.combobox {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 10em;
+    margin: 0;
+    text-align: center;
+  }
+
+}
+
+.logo {
+  position: fixed;
+  opacity: 0.1;
+  top: -20%;
+  left: -10%;
+  transform: rotate(25deg);
+  filter: grayscale(1);
+  mix-blend-mode: multiply;
+  z-index: -1;
+  user-select: none;
+}
+
+.container {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+footer {
+  text-align: center;
+  margin-top: 6vh;
+  margin-bottom: calc(5vh + var(--progress-bar-height));
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  color: var(--terciary);
+}
+
+.link {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  color: var(--text-color);
+  transition: clip-path 350ms ease 0s;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  text-decoration: none;
+  
+  &--text {
+    &::after {
+      content: "";
+      position: absolute;
+      left: -2px;
+      right: -2px;
+      bottom: 0px;
+      height: 2px;
+      background-color: var(--terciary);
+      border-radius: 2px;
+      transition: transform 200ms ease 150ms, opacity 350ms ease 150ms;
+    }
+    
+    &:hover {
+      .link--hover {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
+    
+      .link {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+      }
+
+      &::after {
+        opacity: 0;
+        transform: translateY(-0.25em);
+        transition: transform 200ms ease 0s, opacity 350ms ease 0s; 
+      }
+    }
+
+  }
+
+  &--hover {
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    font-weight: inherit;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    transition: clip-path 350ms ease 0s;
+    user-select: none;
+  }
+}
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4em 3em;
+  flex: 1;
+}
+
+
+
+
+.card-preview {
+  border: 3px solid white;
+  position: relative;
+  transition: filter 200ms ease;
+
+  & > img {
+    transition: filter 200ms ease;
+    filter: brightness(1);
+  }
+
+  &:hover > img {
+    filter: brightness(1.1);
+    transition: filter 200ms ease;
+  }
+}
+
+.register-vote-button {
+  cursor: pointer;
+  display: flex;
+  border-radius: 24px;
+  padding-right: 8px;
+  padding-left: 8px;
+  color: var(--primary);
+  align-items: center;
+  text-transform: uppercase;
+  width: fit-content;
+  background-color: var(--text-color);
+  border: none;
+  &:focus {
+    outline: none;
+  }
+
+  &:not(:last-child) {
+    margin-right: 12px;
+  }
+}
+
+.voting {
+  margin-top: 1em;
+  display: flex;
+}
+
+.vote-progress {
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  // height: calc(var(--progress-bar-height) + 2 * var(--progress-bar-padding));
+  height: var(--progress-bar-height);
+  z-index: 3;
+  left: 0;
+  right: 0;
+  // bottom: calc(-2 *  var(--progress-bar-padding));
+  bottom: calc(var(--progress-bar-offset) * (var(--progress-bar-height)));
+  transition: bottom 300ms cubic-bezier(.86,1.84,.3,.68) 50ms;
+  max-width: 60vw;
+  background-color: var(--terciary);
+  padding: var(--progress-bar-padding);
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  display: flex;
+
+  .candidate-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    flex: 1;
+
+    h4 {
+      margin: 0;
+    }
+
+    img {
+      grid-column: 1 / 2;
+      grid-row: span 2;
+    }
+  }
+}
+
+@media screen and (max-width: 700px){
+  .container {
+      padding: 0 4vw;
+  }
+  .gallery {
+      grid-template-columns: 1fr;
+  }
+  :root {
+    --progress-bar-height: calc(100vh/3);
+  }
+
+  .vote-progress {
+    max-width: unset;
+  }
+}
