@@ -10,6 +10,8 @@ const Cards: CardInfo[] = [
     { titulo: 'Então é Natal', url: 'https://entao-eh-natal.netlify.app/', urlPreview: './previews/7.png' },
     { titulo: 'Christmas Cats', url: 'https://guimma.github.io/Christmas-Cats/', urlPreview: './previews/8.png' },
     { titulo: 'A Saga de Noel', url: 'https://5fda973577a1f931bb780d52--unruffled-swanson-e5cd45.netlify.app/', urlPreview: './previews/9.png' },
+    { titulo: '🎅🎄 NATAL 🎄🎅', url: 'https://daniel-quirino.github.io/cartao-de-natal/', urlPreview: './previews/10.png' },
+    { titulo: 'Cartão de Natal', url: 'https://cartao-de-natal.herokuapp.com/', urlPreview: './previews/11.png' },
 
 ];
 
