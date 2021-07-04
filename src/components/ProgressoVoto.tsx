@@ -5,7 +5,7 @@ type Props = {
     funniest: CardInfo | null;
 };
 
-export default function ProgressoVoto({ mostBeautiful, funniest }: Props) {
+export default function ProgressoVoto({ funniest }: Props) {
     return (
         <article className="vote-progress">
             <section className="candidate-info">
