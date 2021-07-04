@@ -8,7 +8,7 @@ interface Props {
     isFunniest: boolean;
 };
 
-export default function Cartao({ config, setFunniest, setMostBeautiful, isFunniest, isMostBeautiful }: Props) {
+export default function Cartao({ config, setFunniest, isFunniest}: Props) {
     const funnyLottieOptions = { animationData: EngracadoData, autoplay: false, loop: false } as Options;
     const { urlPreview, titulo, url } = config;
     return (
