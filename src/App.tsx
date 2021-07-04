@@ -13,21 +13,19 @@ function App() {
     setCards(shuffle(Cards));
   }, [])
   const [funniest, setFunniest] = useState<CardInfo | null>(null);
-  const [mostBeautiful, setMostBeautiful] = useState<CardInfo | null>(null);
   const [count, setCount] = useState(0);
-  const initial = { mostBeautiful, funniest, count };
+  const initial = { funniest, count };
   const previousState = usePrevious(initial);
 
   useEffect(() => {
     if (!previousState) {
       return;
     }
-    const previousBeautiful = previousState.mostBeautiful;
     const previousFunniest = previousState.funniest
 
-    if ((previousBeautiful && !mostBeautiful) || (previousFunniest && !funniest)) {
+    if (previousFunniest && !funniest) {
       setCount(count - 1);
-    } else if ((!previousBeautiful && mostBeautiful) || (!previousFunniest && funniest)) {
+    } else if ((!previousFunniest && funniest)) {
       setCount(count + 1);
     }
 
@@ -36,31 +34,26 @@ function App() {
       toggleBarDisplay();
     }
 
-  }, [funniest, mostBeautiful, previousState, count]);
+  }, [funniest, previousState, count]);
 
 
   return (
     <>
       <header className="combobox">
-        <h1>Galeria <br />Fecaniguifron</h1>
-        <p>Aqui você pode conferir todas as submissões de cartões de natal e votar
+        <h1>Galeria <br />Gincana Junina/Julina 2021</h1>
+        <p>Aqui você pode conferir todas as submissões da gincana e votar
             <img className="logo" src="./guilda.png" alt="Guilda de frontend" draggable="false" unselectable="on" />
-          <ul>
-            <li>No cartão que você achou mais <strong>divertido</strong>;</li>
-            <li>No cartão que você achou mais <strong>bonito</strong>.</li>
-          </ul>
+            No cartão que você achou mais <strong>divertido</strong>      
         </p>
-      </header>
+      </header> 
       <div className="container">
         <main className="content">
           <article className="gallery">
             {cards.map(card => (
               <Cartao config={card}
                 key={card.titulo}
-                setFunniest={setFunniest}
-                setMostBeautiful={setMostBeautiful}
+                setFunniest={setFunniest}              
                 isFunniest={funniest?.titulo === card.titulo}
-                isMostBeautiful={mostBeautiful?.titulo === card.titulo}
               />
             ))}
           </article>
@@ -69,14 +62,14 @@ function App() {
             <br />
             <span>Guilda de Frontend</span>
             <br />
-            <a href="mailto:joao.rosa@dtidigital.com.br" className="link--text">
+            <a href="mailto:jordana.carvalho@dtidigital.com.br" className="link--text">
               <span className="link">Contato</span>
               <span aria-hidden="true" className="link--hover">Contato</span>
             </a>
           </footer>
         </main>
       </div>
-      <ProgressoVoto funniest={funniest} mostBeautiful={mostBeautiful} />
+      <ProgressoVoto funniest={funniest} />
     </>
   );
 }
