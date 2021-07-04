@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       <header className="combobox">
-        <h1>Galeria <br />Gincana Junina/Julina 2021</h1>
+        <h3>Gincana Junina/Julina 2021</h3>
         <p>Aqui você pode conferir todas as submissões da gincana e votar naquela que você achou mais <strong>divertida</strong>    
             <img className="logo" src="./guilda.png" alt="Guilda de frontend" draggable="false" unselectable="on" />
              
