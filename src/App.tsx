@@ -41,9 +41,9 @@ function App() {
     <>
       <header className="combobox">
         <h1>Galeria <br />Gincana Junina/Julina 2021</h1>
-        <p>Aqui você pode conferir todas as submissões da gincana e votar
+        <p>Aqui você pode conferir todas as submissões da gincana e votar naquela que você achou mais <strong>divertida</strong>    
             <img className="logo" src="./guilda.png" alt="Guilda de frontend" draggable="false" unselectable="on" />
-            No cartão que você achou mais <strong>divertido</strong>      
+             
         </p>
       </header> 
       <div className="container">
